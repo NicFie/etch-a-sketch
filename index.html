@@ -6,20 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
 </head>
 <body onload="createSquares()">
     <header>
         <h1>Etch-A-Sketch</h1>
     </header>
     <main>
-        <h2>Hover over the squares to make a picture!</h2>
-        <button id="change-number">Change number of squares</button> 
-        <div id="grid-container"></div>
-        <button onclick="reset()">Reset</button>
-        <button onclick="multicolor()">Multicolor</button>
-        <p>Choose a colour and press enter</p>
-        <input type="text" id="color-choice" value="black"></input>
+        <h2>Hold down the mouse to draw a picture!</h2>
+        <div class="grid-and-buttons">
+            <div id="grid-container"></div>
+            <div class="buttons">
+                <button id="change-number">Change number of squares</button>
+                <div class="color-buttons">
+                    <button onclick="multicolor()">Multicolour mode</button>
+                    
+                    <button id="change-color-button">Change colour</button>
+                    <input type="text" id="color-choice" value="black"></input>
+                    
+                </div>
+                <button onclick="reset()">Start again</button>
+            </div> 
+        </div>   
+        
+        
     </main>
+    <footer>
+        <h6>Made by NicFie</h6>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

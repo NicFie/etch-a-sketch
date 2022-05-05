@@ -1,14 +1,103 @@
 .square {
-    border: 1px black solid;
+    border: 1px rgb(224, 224, 224) solid;
     box-sizing: border-box;
     width: 40px;
     height: 40px;
     margin: 0;
+    
 }
 
 #grid-container {
     display: flex;
     flex-wrap: wrap;
-    width: 640px;
-    height: 640px;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    
+}
+
+header {
+    background-color: lightblue;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+    padding: 0;
+}
+
+h1 {
+    margin: 10px;
+}
+
+footer {
+    background-color: lightblue;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px black solid;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0 auto;
+    background-image: url("https://images.unsplash.com/photo-1516053256215-94022213b13c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.grid-and-buttons {
+    display: flex;
+    padding: 20px;
+}
+
+#color-choice {
+    visibility: hidden;
+    font-size: 25px;
+    padding: 5px;
+    text-align: center;
+}
+
+html, body {
+    height: 100%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 100px;
+    width: 400px;
+}
+
+button {
+    background-color: lightgray;
+    color: black;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 5px;
+    padding: 10px;
+    width: auto;
+}
+
+.color-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    
 }

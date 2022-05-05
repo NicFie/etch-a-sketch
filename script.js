@@ -1,13 +1,26 @@
 const gridContainer = document.querySelector('#grid-container');
 const numButton = document.getElementById('change-number');
 
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
+
 
 let numberOfSquares = 16;
 
 numButton.addEventListener('click', () => {
-    numberOfSquares = prompt("Choose a number between 1 adn 100");
-    width = 640 / numberOfSquares;
-    height = 640 / numberOfSquares;
+    let userInput = prompt("Choose a number between 1 and 100");
+    if (isNaN(userInput) === true) {
+        alert("Enter a number pls not a word");
+        numberOfSquares = 16;
+    } else if (userInput <= 0 || userInput > 100) {
+        alert("Choose a number between 1 and 100, stop trying to break my etch-a-sketch");
+        numberOfSquares = 16;
+    } else {
+        numberOfSquares = userInput;
+    }
+    width = 500 / numberOfSquares;
+    height = 500 / numberOfSquares;
     removeDivs();
     createSquares();
     return numberOfSquares;
@@ -15,8 +28,8 @@ numButton.addEventListener('click', () => {
 
 
 
-let width = 640 / numberOfSquares;
-let height = 640 / numberOfSquares;
+let width = 500 / numberOfSquares;
+let height = 500 / numberOfSquares;
 
 
 const input = document.getElementById('color-choice');
@@ -29,6 +42,8 @@ input.addEventListener("keydown", (e) => {
 function validate(e) {
     let userInput = document.getElementById("color-choice").value;
     userInput = userInput.toLowerCase();
+    userInput = userInput.replace(/\s/g, '');
+    input.style.visibility = 'hidden';
     if (isColor(userInput) == true) {
         removeDivs();
         let i = 0;
@@ -39,11 +54,17 @@ function validate(e) {
             square.style.height = `${height}px`
             gridContainer.appendChild(square);
             square.addEventListener('mouseover', function(e) {
+                if (e.type === 'mouseover' && !mouseDown) return;
                 square.style.backgroundColor = `${userInput}`;
-            })
+            });
+            square.addEventListener('mousedown', function(e) {
+                if (e.type === 'mouseover' && !mouseDown) return;
+                square.style.backgroundColor = `${userInput}`;
+            });
+            
         }
     } else {
-        alert("Please choose a valid colour");
+        alert("That is not a real colour you noob");
     }
     input.value = "";
 }
@@ -56,13 +77,18 @@ function createSquares() {
         square.style.width = `${width}px`
         square.style.height = `${height}px`
         gridContainer.appendChild(square);      
-        square.addEventListener('mouseover', function(e) {
-            square.style.backgroundColor = "black";
-        })
+        square.addEventListener('mouseover', blackColor);
+        square.addEventListener('mousedown', blackColor);
+        
         
     };
 
 };
+
+function blackColor(e) {
+    if (e.type === 'mouseover' && !mouseDown) return;
+    e.target.style.backgroundColor = 'black';
+}
 
 function multicolor() {
     removeDivs();
@@ -72,19 +98,25 @@ function multicolor() {
         let square = document.createElement('div');
         square.classList.add("square");
         gridContainer.appendChild(square);
-        square.style.width = `${width}px`
-        square.style.height = `${height}px`      
-        const randomColor = 
-        Math.floor(Math.random()*16777215).toString(16);
-        square.addEventListener('mouseover', function(e) {
-            square.style.backgroundColor = "#" + randomColor;
-        })
+        square.style.width = `${width}px`;
+        square.style.height = `${height}px`;    
+        square.addEventListener('mouseover', multiColor);
+        square.addEventListener('mousedown', multiColor);
         
     };
 }
 
+function multiColor(e) {
+    if (e.type === 'mouseover' &&!mouseDown) return;
+    const randomColor = 
+        Math.floor(Math.random()*16777215).toString(16);
+    e.target.style.backgroundColor = "#" + randomColor;
+}
 
-
+const changeColorButton = document.querySelector('#change-color-button');
+changeColorButton.addEventListener('click', (e) => {
+    input.style.visibility = 'visible';
+})
 
 function reset() {
     removeDivs();
