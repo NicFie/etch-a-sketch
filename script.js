@@ -1,27 +1,22 @@
 const gridContainer = document.querySelector('#grid-container');
+const numButton = document.getElementById('change-number');
 
-let numberOfSquares = 16
-let width = 640 / numberOfSquares;
-let height = 640 / numberOfSquares;
-const numberInput = document.getElementById('number-choice')
-numberInput.addEventListener('keydown', (ev) => {
-    if (ev.key === 'Enter') {
-        numberValidate(ev);
-    }
+
+let numberOfSquares = 16;
+
+numButton.addEventListener('click', () => {
+    numberOfSquares = prompt("Choose a number between 1 adn 100");
+    width = 640 / numberOfSquares;
+    height = 640 / numberOfSquares;
+    removeDivs();
+    createSquares();
+    return numberOfSquares;
 })
 
-function numberValidate(ev) {
-    let userNumberInput = document.getElementById('number-choice').value;
-    if (userNumberInput < 1 || userNumberInput > 100) {
-        alert('Choose a number between 1 and 100')
-    }
-    else {
-        return userNumberInput;
-    }
-}
 
 
-
+let width = 640 / numberOfSquares;
+let height = 640 / numberOfSquares;
 
 
 const input = document.getElementById('color-choice');
@@ -71,6 +66,7 @@ function createSquares() {
 
 function multicolor() {
     removeDivs();
+    //createSquares
     let i = 0;
     for(i=0; i < numberOfSquares**2; i++) {
         let square = document.createElement('div');
