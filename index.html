@@ -20,12 +20,17 @@
         <div class="grid-and-buttons">
             <div id="grid-container"></div>
             <div class="buttons">
-                <button id="change-number">Change number of squares</button>
+                <div class="scroll">
+                    <label for="num-squares">Change number of squares</label>
+                    <input type="range" name="num_squares" id="num-squares" min="1" max="100" step="1" value="16">
+                </div>
                 <div class="color-buttons">
                     <button onclick="multicolor()">Multicolour mode</button>
+                    <div class="scroll">
+                        <label for="color-picker">Change colour</label>
+                        <input type="color" name="color" id="color-picker">
+                    </div>
                     
-                    <button id="change-color-button">Change colour</button>
-                    <input type="text" id="color-choice" value="black"></input>
                     
                 </div>
                 <button onclick="reset()">Start again</button>

@@ -84,7 +84,7 @@ html, body {
     width: 400px;
 }
 
-button {
+button, label {
     background-color: lightgray;
     color: black;
     font-size: 20px;
@@ -92,6 +92,22 @@ button {
     border-radius: 5px;
     padding: 10px;
     width: auto;
+    border: 2px black solid;
+    text-align: center;
+}
+
+label {
+    margin-bottom: 20px;
+}
+
+.scroll {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input {
+    width: 100%;
 }
 
 .color-buttons {
